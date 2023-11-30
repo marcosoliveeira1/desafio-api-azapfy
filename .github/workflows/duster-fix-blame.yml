@@ -49,16 +49,23 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.head_ref }}
-      
-      - name: Setup PHP
-        uses: php-actions/composer@master
-        env:
-          COMPOSER: "composer.json"
-        with:
-          php_version: '8.2'
+        - uses: actions/checkout@v3
+    
+        - name: Validate composer.json and composer.lock
+          run: composer validate --strict
+    
+        - name: Cache Composer packages
+          id: composer-cache
+          uses: actions/cache@v3
+          with:
+            path: vendor
+            key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+            restore-keys: |
+              ${{ runner.os }}-php-
+    
+        - name: Install dependencies
+          run: composer install --prefer-dist --no-progress
+        
 
-      - name: Run Tests
-        run: php artisan test --coverage --min=80
+        - name: Run Tests
+          run: php artisan test --coverage --min=80
