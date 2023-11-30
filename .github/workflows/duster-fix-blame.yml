@@ -23,6 +23,8 @@ jobs:
 
       - name: Setup PHP
         uses: php-actions/composer@v6
+        with:
+          php_version: '8.2'
 
       - name: "Duster Fix"
         run: vendor/bin/duster fix --using "phpstan,tlint,pint"
@@ -43,3 +45,6 @@ jobs:
           commit_message: Ignore Dusting commit in git blame
           commit_user_name: GitHub Action
           commit_user_email: actions@github.com
+
+      - name: Run Tests
+        run: php artisan test --coverage --min=80
