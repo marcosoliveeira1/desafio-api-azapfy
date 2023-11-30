@@ -61,4 +61,4 @@ jobs:
           php_version: '8.2'
 
       - name: Run Tests
-        run: ./vendor/bin test --coverage --min=80
+        run: php artisan test --coverage --min=80
