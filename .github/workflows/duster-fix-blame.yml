@@ -21,10 +21,11 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
+      - name: Setup PHP
+        uses: php-actions/composer@v6
+
       - name: "Duster Fix"
-        uses: tighten/duster-action@v2
-        with:
-          args: fix
+        run: vendor/bin/duster fix --using "phpstan,tlint,pint"
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         id: auto_commit_action

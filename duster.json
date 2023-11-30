@@ -6,6 +6,7 @@
         "core"
     ],
     "exclude": [
-        "tests/fixtures"
+        "tests/fixtures",
+        "vendor"
     ]
 }
