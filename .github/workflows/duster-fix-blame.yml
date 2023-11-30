@@ -55,8 +55,10 @@ jobs:
       
       - name: Setup PHP
         uses: php-actions/composer@master
+        env:
+          COMPOSER: "composer.json"
         with:
           php_version: '8.2'
 
       - name: Run Tests
-        run: php artisan test --coverage --min=80
+        run: ./vendor/bin test --coverage --min=80
