@@ -22,7 +22,7 @@ jobs:
           ref: ${{ github.head_ref }}
 
       - name: Setup PHP
-        uses: php-actions/composer@v6
+        uses: php-actions/composer@master
         with:
           php_version: '8.2'
 
@@ -45,6 +45,18 @@ jobs:
           commit_message: Ignore Dusting commit in git blame
           commit_user_name: GitHub Action
           commit_user_email: actions@github.com
+
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+      
+      - name: Setup PHP
+        uses: php-actions/composer@master
+        with:
+          php_version: '8.2'
 
       - name: Run Tests
         run: php artisan test --coverage --min=80
