@@ -43,3 +43,6 @@ jobs:
           commit_message: Ignore Dusting commit in git blame
           commit_user_name: GitHub Action
           commit_user_email: actions@github.com
+
+      - name: Run Tests
+        run: php artisan test --coverage --min=80
