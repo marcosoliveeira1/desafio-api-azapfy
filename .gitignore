@@ -17,3 +17,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+DOCKER_ENV
+docker_tag
+Dockerfile-php-build
+output.log
