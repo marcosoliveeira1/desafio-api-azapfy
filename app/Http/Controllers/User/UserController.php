@@ -6,10 +6,10 @@ use App\Helpers\HttpStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SignInRequest;
 use App\Http\Requests\SignUpRequest;
-use App\Services\UserSignInService\SignInInput;
-use App\Services\UserSignInService\SignInService;
-use App\Services\UserSignUpService\SignUpInput;
-use App\Services\UserSignUpService\SignUpService;
+use App\Services\User\SignInService\SignInInput;
+use App\Services\User\SignInService\SignInService;
+use App\Services\User\SignUpService\SignUpInput;
+use App\Services\User\SignUpService\SignUpService;
 use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
