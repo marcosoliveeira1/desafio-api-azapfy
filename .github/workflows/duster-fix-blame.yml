@@ -23,6 +23,8 @@ jobs:
 
       - name: Setup PHP
         uses: php-actions/composer@v6
+        with:
+          php_version: '8.2'
 
       - name: "Duster Fix"
         run: vendor/bin/duster fix --using "phpstan,tlint,pint"
